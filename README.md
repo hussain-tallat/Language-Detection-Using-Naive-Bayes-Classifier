@@ -19,13 +19,22 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 model = MultinomialNB()
 model.fit(X_train, y_train)
 print("Model Accuracy:", model.score(X_test, y_test))
-def plot_language_distribution():
-    lang_counts = data['language'].value_counts()
+# graph 
+plot_language_distribution()
+def plot_prediction_probabilities(probabilities, classes):
     plt.figure(figsize=(8, 5))
-    plt.bar(lang_counts.index, lang_counts.values, color='skyblue')
-    plt.title("Language Distribution in Dataset")
+    plt.bar(classes, probabilities[0], color='lightgreen')
+    plt.title("Prediction Probabilities")
     plt.xlabel("Language")
-    plt.ylabel("Number of Samples")
+    plt.ylabel("Probability")
     plt.xticks(rotation=45)
+    plt.ylim(0, 1)
     plt.tight_layout()
     plt.show()
+# first functionality ( short language detection
+if len(user.strip()) < 3:
+    print("Text too short to detect language. Please enter a longer sentence.")
+
+#secan functionality ( save all in file ) 
+with open("prediction_log.txt", "a", encoding="utf-8") as file:
+        file.write(f"Text: {user}\nPredicted: {output[0]}\nConfidence: {confidence:.2f}%\n\n"
