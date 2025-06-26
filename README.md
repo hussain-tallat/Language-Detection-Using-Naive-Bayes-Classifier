@@ -35,6 +35,7 @@ def plot_prediction_probabilities(probabilities, classes):
 if len(user.strip()) < 3:
     print("Text too short to detect language. Please enter a longer sentence.")
 
-#secan functionality ( save all in file ) 
+# secand functionality ( save all in file )
+
 with open("prediction_log.txt", "a", encoding="utf-8") as file:
         file.write(f"Text: {user}\nPredicted: {output[0]}\nConfidence: {confidence:.2f}%\n\n"
